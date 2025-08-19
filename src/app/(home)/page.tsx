@@ -84,12 +84,13 @@ export default function Home() {
 
       <section className="bg-mygray w-full my-10" id="about">
         <div className="container md:w-7xl mx-auto flex flex-col lg:flex-row justify-between">
-          <div className="w-full md:w-1/2 p-20">
+          <div className="w-full md:w-1/2 p-10 md:p-20">
             <img src="/img/pc.svg" alt="" className="w-full" />
           </div>
           <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
-            <h2 className="font-bold text-xl text-myprimary">
-              Masalah yang kami selesaikan
+            <h2 className="font-bold text-2xl md:text-3xl text-myprimary">
+              <span className="text-mysecondary">Masalah</span> yang kami
+              selesaikan
             </h2>
             <p className="mt-3 text-justify text-mytertiary">
               Kami tidak hanya mengerjakan task. Kami memetakan tujuan bisnis,
@@ -98,37 +99,49 @@ export default function Home() {
             </p>
             <ul className="*:mt-3 mt-5">
               <li className="flex">
-                <CircleCheck color="black" size="24" />
+                <div>
+                  <CircleCheck color="#00ADB5" size="24" />
+                </div>
                 <span className="ml-2 text-myprimary">
                   Website yang tidak responsif di berbagai perangkat
                 </span>
               </li>
               <li className="flex">
-                <CircleCheck color="black" size="24" />
+                <div>
+                  <CircleCheck color="#00ADB5" size="24" />
+                </div>
                 <span className="ml-2 text-myprimary">
                   Website lama, lambat, dan susah diubah.
                 </span>
               </li>
               <li className="flex">
-                <CircleCheck color="black" size="24" />
+                <div>
+                  <CircleCheck color="#00ADB5" size="24" />
+                </div>
                 <span className="ml-2 text-myprimary">
                   Desain kurang meyakinkan sehingga konversi rendah.
                 </span>
               </li>
               <li className="flex">
-                <CircleCheck color="black" size="24" />
+                <div>
+                  <CircleCheck color="#00ADB5" size="24" />
+                </div>
                 <span className="ml-2 text-myprimary">
                   Aplikasi mobile belum stabil / belum siap scale.
                 </span>
               </li>
               <li className="flex">
-                <CircleCheck color="black" size="24" />
+                <div>
+                  <CircleCheck color="#00ADB5" size="24" />
+                </div>
                 <span className="ml-2 text-myprimary">
                   Trafik organik belum optimal (SEO & konten).
                 </span>
               </li>
               <li className="flex">
-                <CircleCheck color="black" size="24" />
+                <div>
+                  <CircleCheck color="#00ADB5" size="24" />
+                </div>
                 <span className="ml-2 text-myprimary">
                   Tim internal kewalahan maintenance & security.
                 </span>
@@ -141,8 +154,8 @@ export default function Home() {
       <section className="w-full my-10 p-10 md:p-0" id="layanan">
         <div className="container md:w-7xl mx-auto">
           <div className="w-full md:w-1/2">
-            <h2 className="font-bold text-xl text-myprimary">
-              Layanan Unggulan
+            <h2 className="font-bold text-2xl text-myprimary">
+              <span className="text-mysecondary">Layanan</span> Unggulan
             </h2>
             <p className="mt-3 text-justify text-mytertiary">
               Kami tidak hanya mengerjakan task. Kami memetakan tujuan bisnis,
@@ -151,7 +164,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
-            <div className="bg-mygray rounded-lg border-t-4 border-mysecondary p-10">
+            <div className="bg-white shadow-lg rounded-lg border-t-4 border-mysecondary p-10">
               <div className="bg-mysecondary inline-block rounded-full p-3">
                 <Globe color="white" size={34} />
               </div>
@@ -162,7 +175,7 @@ export default function Home() {
                 page campaign, hingga e-commerce.
               </p>
             </div>
-            <div className="bg-mygray rounded-lg border-t-4 border-mysecondary p-10">
+            <div className="bg-white shadow-lg rounded-lg border-t-4 border-mysecondary p-10">
               <div className="bg-mysecondary inline-block rounded-full p-3">
                 <Globe color="white" size={34} />
               </div>
@@ -173,7 +186,7 @@ export default function Home() {
                 page campaign, hingga e-commerce.
               </p>
             </div>
-            <div className="bg-mygray rounded-lg border-t-4 border-mysecondary p-10">
+            <div className="bg-white shadow-lg rounded-lg border-t-4 border-mysecondary p-10">
               <div className="bg-mysecondary inline-block rounded-full p-3">
                 <Globe color="white" size={34} />
               </div>
@@ -184,7 +197,7 @@ export default function Home() {
                 page campaign, hingga e-commerce.
               </p>
             </div>
-            <div className="bg-mygray rounded-lg border-t-4 border-mysecondary p-10">
+            <div className="bg-white shadow-lg rounded-lg border-t-4 border-mysecondary p-10">
               <div className="bg-mysecondary inline-block rounded-full p-3">
                 <Globe color="white" size={34} />
               </div>
@@ -205,7 +218,7 @@ export default function Home() {
       >
         <div className="container md:w-7xl mx-auto">
           <div className="w-full md:w-1/2">
-            <h2 className="font-bold text-xl text-white">Portofolio</h2>
+            <h2 className="font-bold text-2xl text-white">Portofolio</h2>
             <p className="mt-3 text-justify text-white">
               Lihat bagaimana kami membantu klien di berbagai industri membangun
               website dan aplikasi yang cepat, aman, dan berdampak. Setiap
@@ -250,7 +263,7 @@ export default function Home() {
       >
         <div className="container md:w-7xl mx-auto">
           <div className="w-full md:w-1/2">
-            <h2 className="font-bold text-xl text-myprimary">Paket Harga</h2>
+            <h2 className="font-bold text-2xl text-myprimary">Paket Harga</h2>
             <p className="mt-3 text-justify text-mytertiary">
               Punya ide atau proyek yang ingin diwujudkan? Ceritakan
               kebutuhanmu. Kami akan membantu kamu untuk mencapai tujuanmu
@@ -394,23 +407,23 @@ export default function Home() {
       >
         <div className="absolute top-10 left-10 w-64 h-64 bg-sky-200 rounded-full blur-3xl"></div>
         <div className="container md:w-7xl mx-auto flex flex-col lg:flex-row justify-between">
-          <div className="w-full md:w-1/2 p-20">
+          <div className="w-full md:w-1/2 p-10 md:p-20">
             <div className="ml-0 md:ml-10 grid grid-cols-3 gap-10">
-              <div className=" border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
+              <div className="z-10 bg-white border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
                 <img
                   src="/img/laravel.png"
                   alt=""
                   className="grayscale-100 hover:grayscale-0"
                 />
               </div>
-              <div className=" border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
+              <div className="z-10 bg-white border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
                 <img
                   src="/img/mysql.png"
                   alt=""
                   className="grayscale-100 hover:grayscale-0"
                 />
               </div>
-              <div className=" border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
+              <div className="z-10 bg-white border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
                 <img
                   src="/img/next.png"
                   alt=""
@@ -419,21 +432,21 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-5 mr-0 md:mr-10  grid grid-cols-3 gap-10">
-              <div className=" border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
+              <div className="z-10 bg-white border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
                 <img
                   src="/img/tailwind.png"
                   alt=""
                   className="grayscale-100 hover:grayscale-0"
                 />
               </div>
-              <div className=" border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
+              <div className="z-10 bg-white border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
                 <img
                   src="/img/react.png"
                   alt=""
                   className="grayscale-100 hover:grayscale-0"
                 />
               </div>
-              <div className=" border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
+              <div className="z-10 bg-white border border-gray-300 p-5 rounded-xl hover:scale-[1.02] hover:shadow-md transition">
                 <img
                   src="/img/node.png"
                   alt=""
@@ -446,8 +459,8 @@ export default function Home() {
             <span className="text-myaccent font-bold">
               Pondasi cepat, aman dan mudah di skalakan
             </span>
-            <h2 className="font-bold text-4xl text-myprimary">
-              Teknologi & Stack Andal
+            <h2 className="font-bold text-3xl md:text-4xl text-myprimary">
+              <span className="text-mysecondary">Teknologi</span> & Stack Andal
             </h2>
             <p className="mt-3 text-justify text-mytertiary">
               Kami membangun dengan stack modern seperti Next.js/Laravel,
@@ -463,7 +476,7 @@ export default function Home() {
       <section className="w-full mt-10" id="kontak">
         <div className="container md:w-7xl mx-auto flex flex-col lg:flex-row justify-between">
           <div className="w-full md:w-1/2 p-10">
-            <h2 className="font-bold text-xl text-myprimary">Hubungi Kami</h2>
+            <h2 className="font-bold text-2xl text-myprimary">Hubungi Kami</h2>
             <p className="mt-3 text-justify text-mytertiary">
               Punya ide atau proyek yang ingin diwujudkan? Ceritakan
               kebutuhanmu.
@@ -542,17 +555,37 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-myprimary text-white py-10 mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div className="container md:w-7xl mx-auto grid grid-cols-1 md:grid-cols-3  bg-red-500">
+      <footer className="bg-myprimary">
+        <div className="container md:w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-10 text-white px-5 py-10 mt-10">
           <div className="px-5">
             <h3 className="font-bold text-lg mb-5">Tech Craft</h3>
-            <p className="text-white">
+            <p className="text-white text-justify">
               Kami adalah tim profesional yang siap membantu Anda mewujudkan
               produk digital impian Anda. Dengan pengalaman dan keahlian di
               bidang web development, mobile app development, dan digital
               marketing, kami siap memberikan solusi terbaik untuk kebutuhan
               bisnis Anda.
             </p>
+          </div>
+          <div className="px-5 mx-0 md:mx-auto mt-5 md:mt-0">
+            <h3 className="font-bold text-lg mb-5">Quick Link</h3>
+            <ul className="text-white">
+              <li className="mb-3">
+                <a href="/">Home</a>
+              </li>
+              <li className="mb-3">
+                <a href="#about">layanan</a>
+              </li>
+              <li className="mb-3">
+                <a href="#portfolio">portfolio</a>
+              </li>
+              <li className="mb-3">
+                <a href="#pricing">pricing</a>
+              </li>
+              <li className="mb-3">
+                <a href="#kontak">Contact</a>
+              </li>
+            </ul>
           </div>
           <div className="px-5 mt-5 md:mt-0">
             <h3 className="font-bold text-lg mb-5">Kontak Kami</h3>
@@ -571,20 +604,11 @@ export default function Home() {
               </li>
             </ul>
           </div>
-          <div className="px-5 mt-5 md:mt-0">
-            <h3 className="font-bold text-lg mb-5">Tautan</h3>
-            <ul className="text-white">
-              <li className="mb-3">
-                <a href="/">Home</a>
-              </li>
-              <li className="mb-3">
-                <a href="#about">About</a>
-              </li>
-              <li className="mb-3">
-                <a href="#kontak">Contact</a>
-              </li>
-            </ul>
-          </div>
+        </div>
+        <div className="bg-mytertiary w-full p-4 text-center">
+          <p className="text-white">
+            &copy; {new Date().getFullYear()} Tech Craft. All rights reserved.
+          </p>
         </div>
       </footer>
     </>

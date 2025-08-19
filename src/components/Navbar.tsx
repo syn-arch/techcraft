@@ -31,7 +31,7 @@ export default function Navbar() {
       className={`sticky top-0 z-50 w-full transition-all bg-myprimary`}
       role="banner"
     >
-      <nav className="px-5 md:px-0 container lg:w-7xl mx-auto flex items-center justify-between">
+      <nav className="px-5 py-5 md:py-0 md:px-0 container lg:w-7xl mx-auto flex items-center justify-between">
         <Link
           href="/"
           className="flex items-center gap-2"
