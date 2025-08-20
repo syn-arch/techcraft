@@ -1,14 +1,14 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import { Globe, Check, CircleCheck, MapPin, Phone, Mail } from "lucide-react";
+import { Globe, Check, CircleCheck, MapPin, Phone, Mail, ArrowDown } from "lucide-react";
 import CountUp from "react-countup";
 
 export default function Home() {
   return (
     <>
       <Navbar />
-      <section className="p-5 md:p-0 container md:w-7xl mx-auto pt-10 md:pt-15 flex flex-col-reverse lg:flex-row justify-between">
+      <section className="p-5 md:p-0 container md:w-7xl mx-auto py-10 md:py-28 flex flex-col-reverse lg:flex-row justify-between">
         <div className="mt-0 md:mt-5 p-0">
           <span className="bg-myaccent py-1 px-3 font-semibold rounded-full text-white">
             Mulai Wujudkan Produk Digital Impianmu!
@@ -24,7 +24,7 @@ export default function Home() {
           </p>
 
           <a
-            href="#contact"
+            href="#kontak"
             className="bg-myprimary text-white px-6 py-3 rounded-lg mt-8 inline-block hover:bg-mytertiary transition-colors duration-300"
           >
             Konsultasi Gratis
@@ -33,7 +33,7 @@ export default function Home() {
             href="#portfolio"
             className="ml-2 border border-myprimary text-myprimary px-6 py-3 rounded-lg mt-8 inline-block hover:border-mysecondary hover:bg-mysecondary hover:text-white transition-colors duration-300"
           >
-            Lihat Portfolio
+            Lihat Portfolio <ArrowDown className="inline ml-2" />
           </a>
           <div className="flex mt-20 *:mr-10">
             <div className="flex flex-col">
@@ -218,8 +218,8 @@ export default function Home() {
       >
         <div className="container md:w-7xl mx-auto">
           <div className="w-full md:w-1/2">
-            <h2 className="font-bold text-2xl text-white">Portofolio</h2>
-            <p className="mt-3 text-justify text-white">
+            <h2 className="font-bold text-2xl text-black">Portofolio</h2>
+            <p className="mt-3 text-justify text-black">
               Lihat bagaimana kami membantu klien di berbagai industri membangun
               website dan aplikasi yang cepat, aman, dan berdampak. Setiap
               proyek kami tampilkan dengan konteks, solusi, dan angka hasilnya.
@@ -396,7 +396,7 @@ export default function Home() {
           </div>
           <p className="mt-10">
             Punya kebutuhan lain? silahkan konsultasikan project kamu sekarang,
-            klik disini.
+            <a  href="#kontak" className="ml-2 font-bold">klik disini.</a>
           </p>
         </div>
       </section>
