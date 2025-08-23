@@ -63,7 +63,7 @@ export default function Page() {
                     <MoreHorizontal className="h-4 w-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
-                    <Link href="/client/3">
+                    <Link href="/client/edit/3">
                       <DropdownMenuItem>Edit</DropdownMenuItem>
                     </Link>
                     <DropdownMenuItem>Hapus</DropdownMenuItem>

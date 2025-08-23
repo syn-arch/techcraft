@@ -28,15 +28,16 @@ import { Separator } from "@/components/ui/separator";
 import { toast } from "sonner";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 // 1) Schema validasi dengan Zod
 const schema = z.object({
-  name: z.string().min(2, "Nama minimal 2 karakter"),
-  phone: z.string().min(2, "Nama minimal 2 karakter"),
-  email: z.string().email("Email tidak valid"),
-  password: z.string().min(6, "Password minimal 6 karakter"),
-  password_confirmation: z.string().min(6, "Password minimal 6 karakter"),
-  picture: z.string(),
+  order_id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  start_date: z.string(),
+  end_date: z.string(),
+  status: z.string(),
 });
 
 export type FormValues = z.infer<typeof schema>;
@@ -46,12 +47,12 @@ export default function UserForm() {
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
+      order_id: "",
       name: "",
-      email: "",
-      password: "",
-      password_confirmation: "",
-      phone: "",
-      picture: "",
+      description: "",
+      start_date: "",
+      end_date: "",
+      status: "",
     },
     mode: "onChange",
   });
@@ -78,7 +79,12 @@ export default function UserForm() {
     <div className="w-full grid place-items-center p-4">
       <Card className="w-full">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Profile Saya</CardTitle>
+          <CardTitle>Tambah Project</CardTitle>
+          <Link href="/project">
+            <Button variant="outline" size="sm" className="gap-1">
+              <ArrowLeft /> Kembali
+            </Button>
+          </Link>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -86,12 +92,19 @@ export default function UserForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
-                  name="name"
+                  name="order_id"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nama</FormLabel>
+                      <FormLabel>Order</FormLabel>
                       <FormControl>
-                        <Input type="text" placeholder="Nama" {...field} />
+                        <Select>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Pilih" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="1">Order</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -99,14 +112,14 @@ export default function UserForm() {
                 />
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="name"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel>Nama Project</FormLabel>
                       <FormControl>
                         <Input
-                          type="email"
-                          placeholder="yourmail@gmail.com"
+                          type="text"
+                          placeholder="Nama Project"
                           {...field}
                         />
                       </FormControl>
@@ -115,15 +128,33 @@ export default function UserForm() {
                   )}
                 />
               </div>
+
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Deskripsi</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="Deskripsi" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
-                  name="phone"
+                  name="start_date"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Telepon</FormLabel>
+                      <FormLabel>Tanggal Mulai</FormLabel>
                       <FormControl>
-                        <Input type="text" placeholder="Telepon" {...field} />
+                        <Input
+                          type="date"
+                          placeholder="Tanggal Mulai"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -131,14 +162,14 @@ export default function UserForm() {
                 />
                 <FormField
                   control={form.control}
-                  name="picture"
+                  name="end_date"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Gambar</FormLabel>
+                      <FormLabel>Tanggal Selesai</FormLabel>
                       <FormControl>
                         <Input
-                          type="password"
-                          placeholder="Password"
+                          type="date"
+                          placeholder="Tanggal Selesai"
                           {...field}
                         />
                       </FormControl>
@@ -151,34 +182,19 @@ export default function UserForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
-                  name="password"
+                  name="status"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>
-                        Password{" "}
-                        <small className="text-red-500">
-                          (*isi untuk mengubah)
-                        </small>
-                      </FormLabel>
+                      <FormLabel>Status</FormLabel>
                       <FormControl>
-                        <Input type="text" placeholder="Telepon" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="password_confirmation"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Konfirmasi Password</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="password"
-                          placeholder="Konfrimasi Password"
-                          {...field}
-                        />
+                        <Select>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Pilih" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="Status">Status</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>

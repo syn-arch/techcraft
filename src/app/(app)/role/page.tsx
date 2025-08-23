@@ -22,11 +22,11 @@ export default function Page() {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between">
         <div>
-          <CardTitle>Data Project</CardTitle>
+          <CardTitle>Data Role</CardTitle>
         </div>
-        <Link href="/project/create">
+        <Link href="/role/create">
           <Button variant="outline" size="sm" className="gap-1">
-            <Plus /> Tambah Project
+            <Plus /> Tambah Role
           </Button>
         </Link>
       </CardHeader>
@@ -35,12 +35,7 @@ export default function Page() {
           <TableHeader>
             <TableRow>
               <TableHead>No</TableHead>
-              <TableHead>Order Code</TableHead>
               <TableHead>Nama</TableHead>
-              <TableHead>Deskripsi</TableHead>
-              <TableHead>Tanggal Mulai</TableHead>
-              <TableHead>Tanggal Selesai</TableHead>
-              <TableHead>Status</TableHead>
               <TableHead></TableHead>
             </TableRow>
           </TableHeader>
@@ -48,27 +43,13 @@ export default function Page() {
             <TableRow>
               <TableCell>1</TableCell>
               <TableCell>Tes</TableCell>
-              <TableCell>Tes</TableCell>
-              <TableCell>Tes</TableCell>
-              <TableCell>Tes</TableCell>
-              <TableCell>Tes</TableCell>
-              <TableCell>Tes</TableCell>
               <TableCell className="flex justify-end items-center">
                 <DropdownMenu>
                   <DropdownMenuTrigger className="py-2  px-4 flex gap-5">
                     <MoreHorizontal className="h-4 w-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
-                    <Link href="/project/3/milestone">
-                      <DropdownMenuItem>Milestone</DropdownMenuItem>
-                    </Link>
-                    <Link href="/project/3/kanban">
-                      <DropdownMenuItem>Kanban</DropdownMenuItem>
-                    </Link>
-                    <Link href="/task?projectId=3">
-                      <DropdownMenuItem>Task</DropdownMenuItem>
-                    </Link>
-                    <Link href="/project/edit/3">
+                    <Link href="/role/edit/3">
                       <DropdownMenuItem>Edit</DropdownMenuItem>
                     </Link>
                     <DropdownMenuItem>Hapus</DropdownMenuItem>

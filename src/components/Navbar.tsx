@@ -31,10 +31,10 @@ export default function Navbar() {
       className={`sticky top-0 z-50 w-full transition-all bg-myprimary`}
       role="banner"
     >
-      <nav className="px-5 py-5 md:py-0 md:px-0 container lg:w-7xl mx-auto flex items-center justify-between">
+      <nav className="px-5 md:py-0 md:px-0 container lg:w-7xl mx-auto flex items-center justify-between">
         <Link
           href="/"
-          className="flex items-center gap-2"
+          className="flex items-center gap-2 py-7"
           aria-label="Tech Craft Home"
         >
           <svg
@@ -124,26 +124,26 @@ export default function Navbar() {
       {/* Mobile drawer */}
       {open && (
         <div className="md:hidden border-myprimary">
-          <ul className="container py-3 space-y-2">
+          <ul className="container space-y-2 pb-5">
             {links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
-                  className="block rounded-lg px-3 py-2 text-white"
+                  className="block rounded-lg px-5 py-2 text-white"
                   onClick={() => setOpen(false)}
                 >
                   {l.label}
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href="#konsultasi"
+            <li className="px-5">
+              <Link
+                href="/login"
                 className="mt-1 inline-flex w-full justify-center rounded-xl bg-mysecondary px-4 py-2 text-white font-medium"
                 onClick={() => setOpen(false)}
               >
                 Login
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -32,7 +32,7 @@ export default function SimpleDashboard({
           <Button variant="ghost" size="icon" className="md:hidden">
             <Menu className="h-5 w-5" />
           </Button>
-          <div className="font-semibold text-lg">TechCraft – Dashboard</div>
+          <div className="font-semibold text-lg">TechCraft</div>
           <div className="ml-auto flex items-center gap-2 w-full md:w-auto">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

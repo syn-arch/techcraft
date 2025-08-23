@@ -15,6 +15,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { toast } from "sonner";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -22,21 +28,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
-import { toast } from "sonner";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
 
 // 1) Schema validasi dengan Zod
 const schema = z.object({
-  name: z.string().min(2, "Nama minimal 2 karakter"),
-  phone: z.string().min(2, "Nama minimal 2 karakter"),
-  email: z.string().email("Email tidak valid"),
-  password: z.string().min(6, "Password minimal 6 karakter"),
-  password_confirmation: z.string().min(6, "Password minimal 6 karakter"),
-  picture: z.string(),
+  client_id: z.number(),
+  package_id: z.number(),
+  code: z.string(),
+  order_date: z.string(),
+  due_date: z.string(),
+  total_amount: z.string(),
+  status: z.string(),
+  notes: z.string(),
 });
 
 export type FormValues = z.infer<typeof schema>;
@@ -46,12 +49,14 @@ export default function UserForm() {
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      password_confirmation: "",
-      phone: "",
-      picture: "",
+      client_id: 0,
+      package_id: 0,
+      code: "",
+      order_date: "",
+      due_date: "",
+      total_amount: "",
+      status: "",
+      notes: "",
     },
     mode: "onChange",
   });
@@ -78,7 +83,12 @@ export default function UserForm() {
     <div className="w-full grid place-items-center p-4">
       <Card className="w-full">
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Profile Saya</CardTitle>
+          <CardTitle>Tambah Order</CardTitle>
+          <Link href="/order">
+            <Button variant="outline" size="sm" className="gap-1">
+              <ArrowLeft /> Kembali
+            </Button>
+          </Link>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -86,61 +96,36 @@ export default function UserForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
-                  name="name"
+                  name="client_id"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Nama</FormLabel>
-                      <FormControl>
-                        <Input type="text" placeholder="Nama" {...field} />
-                      </FormControl>
-                      <FormMessage />
+                      <FormLabel>Klien</FormLabel>
+                      <Select>
+                        <SelectTrigger className="w-full">
+                          <SelectValue placeholder="Pilih" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1">Klien</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </FormItem>
                   )}
                 />
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="package_id"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel>Paket</FormLabel>
                       <FormControl>
-                        <Input
-                          type="email"
-                          placeholder="yourmail@gmail.com"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Telepon</FormLabel>
-                      <FormControl>
-                        <Input type="text" placeholder="Telepon" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="picture"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Gambar</FormLabel>
-                      <FormControl>
-                        <Input
-                          type="password"
-                          placeholder="Password"
-                          {...field}
-                        />
+                        <Select>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Pilih" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="1">Paket</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -151,17 +136,12 @@ export default function UserForm() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
-                  name="password"
+                  name="order_date"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>
-                        Password{" "}
-                        <small className="text-red-500">
-                          (*isi untuk mengubah)
-                        </small>
-                      </FormLabel>
+                      <FormLabel>Tanggal Order</FormLabel>
                       <FormControl>
-                        <Input type="text" placeholder="Telepon" {...field} />
+                        <Input type="date" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -169,22 +149,84 @@ export default function UserForm() {
                 />
                 <FormField
                   control={form.control}
-                  name="password_confirmation"
+                  name="due_date"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Konfirmasi Password</FormLabel>
+                      <FormLabel>Tanggal Jatuh Tempo</FormLabel>
                       <FormControl>
-                        <Input
-                          type="password"
-                          placeholder="Konfrimasi Password"
-                          {...field}
-                        />
+                        <Input type="date" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
               </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="code"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Kode</FormLabel>
+                      <FormControl>
+                        <Input type="text" placeholder="Kode" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="total_amount"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Total</FormLabel>
+                      <FormControl>
+                        <Input type="number" placeholder="Total" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="status"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Status</FormLabel>
+                      <FormControl>
+                        <Select>
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Pilih" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="pending">Pending</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <FormField
+                control={form.control}
+                name="notes"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Catatan</FormLabel>
+                    <FormControl>
+                      <Textarea placeholder="Catatan" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
               <Separator />
 

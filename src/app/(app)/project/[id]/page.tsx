@@ -65,7 +65,7 @@ export default function Page() {
                     <Link href="/project/3/kanban">
                       <DropdownMenuItem>Kanban</DropdownMenuItem>
                     </Link>
-                    <Link href="/task?projectId=3">
+                    <Link href="/task/3">
                       <DropdownMenuItem>Task</DropdownMenuItem>
                     </Link>
                     <Link href="/project/edit/3">

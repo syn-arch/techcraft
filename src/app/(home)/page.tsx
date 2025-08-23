@@ -88,7 +88,7 @@ export default function Home() {
             <img src="/img/pc.svg" alt="" className="w-full" />
           </div>
           <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
-            <h2 className="font-bold text-2xl md:text-3xl text-myprimary">
+            <h2 className="font-bold text-2xl text-myprimary">
               <span className="text-mysecondary">Masalah</span> yang kami
               selesaikan
             </h2>
@@ -263,7 +263,9 @@ export default function Home() {
       >
         <div className="container md:w-7xl mx-auto">
           <div className="w-full md:w-1/2">
-            <h2 className="font-bold text-2xl text-myprimary">Paket Harga</h2>
+            <h2 className="font-bold text-2xl text-myprimary">
+              <span className="text-mysecondary">Paket</span> Harga
+            </h2>
             <p className="mt-3 text-justify text-mytertiary">
               Punya ide atau proyek yang ingin diwujudkan? Ceritakan
               kebutuhanmu. Kami akan membantu kamu untuk mencapai tujuanmu
@@ -396,7 +398,9 @@ export default function Home() {
           </div>
           <p className="mt-10">
             Punya kebutuhan lain? silahkan konsultasikan project kamu sekarang,
-            <a  href="#kontak" className="ml-2 font-bold">klik disini.</a>
+            <a href="#kontak" className="ml-2 font-bold">
+              klik disini.
+            </a>
           </p>
         </div>
       </section>
@@ -476,7 +480,9 @@ export default function Home() {
       <section className="w-full mt-10" id="kontak">
         <div className="container md:w-7xl mx-auto flex flex-col lg:flex-row justify-between">
           <div className="w-full md:w-1/2 p-10">
-            <h2 className="font-bold text-2xl text-myprimary">Hubungi Kami</h2>
+            <h2 className="font-bold text-2xl text-myprimary">
+              <span className="text-mysecondary">Hubungi</span> Kami
+            </h2>
             <p className="mt-3 text-justify text-mytertiary">
               Punya ide atau proyek yang ingin diwujudkan? Ceritakan
               kebutuhanmu.
@@ -490,7 +496,7 @@ export default function Home() {
                   <input
                     type="text"
                     id="name"
-                    className="w-full p-2 border-b-2 border-myprimary bg-gray-100 rounded focus:outline-none"
+                    className="w-full py-3 px-2 border-b-2 border-gray-400 bg-gray-50 rounded focus:outline-none"
                     placeholder="Masukkan nama Anda"
                   />
                 </div>
@@ -501,7 +507,7 @@ export default function Home() {
                   <input
                     type="text"
                     id="name"
-                    className="w-full p-2 border-b-2 border-myprimary bg-gray-100 rounded focus:outline-none"
+                    className="w-full py-3 px-2 border-b-2 border-gray-400 bg-gray-50 rounded focus:outline-none"
                     placeholder="Masukkan No Whatsapp"
                   />
                 </div>
@@ -512,7 +518,7 @@ export default function Home() {
                   <textarea
                     rows={7}
                     id="name"
-                    className="w-full p-2 border-b-2 border-myprimary bg-gray-100 rounded focus:outline-none"
+                    className="w-full py-3 px-2 border-b-2 border-gray-400 bg-gray-50 rounded focus:outline-none"
                     placeholder="Masukkan pesan"
                   ></textarea>
                 </div>
