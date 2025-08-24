@@ -59,14 +59,8 @@ export default function Page() {
                     <MoreHorizontal className="h-4 w-4" />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
-                    <Link href="/project/3/milestone">
-                      <DropdownMenuItem>Milestone</DropdownMenuItem>
-                    </Link>
-                    <Link href="/project/3/kanban">
-                      <DropdownMenuItem>Kanban</DropdownMenuItem>
-                    </Link>
-                    <Link href="/task?projectId=3">
-                      <DropdownMenuItem>Task</DropdownMenuItem>
+                    <Link href="/project/3">
+                      <DropdownMenuItem>Detail</DropdownMenuItem>
                     </Link>
                     <Link href="/project/edit/3">
                       <DropdownMenuItem>Edit</DropdownMenuItem>

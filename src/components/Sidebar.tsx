@@ -12,7 +12,9 @@ import {
   Folder,
   LogOut,
   UsersRound,
+  LogOutIcon,
 } from "lucide-react";
+import { getCookie } from "@/lib/utils";
 
 const menu = [
   {
@@ -60,12 +62,22 @@ const menu = [
     url: "/profile",
     icon: User,
   },
-  {
-    name: "Logout",
-    url: "/logout",
-    icon: LogOut,
-  },
 ];
+
+const handleLogout = async () => {
+  const xsrfToken = getCookie("XSRF-TOKEN");
+  await fetch(`${process.env.NEXT_PUBLIC_API_URL}/logout`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "X-Requested-With": "XMLHttpRequest",
+      "Content-Type": "application/json",
+      "X-XSRF-TOKEN": decodeURIComponent(xsrfToken),
+    },
+  });
+  // Setelah logout, redirect ke halaman login
+  window.location.href = "/login";
+};
 
 export default function Sidebar() {
   return (
@@ -86,6 +98,13 @@ export default function Sidebar() {
             </Button>
           </Link>
         ))}
+        <Button
+          onClick={handleLogout}
+          variant="ghost"
+          className="w-full justify-start gap-2"
+        >
+          <LogOutIcon className="h-4 w-4" /> Logout
+        </Button>
       </nav>
     </aside>
   );

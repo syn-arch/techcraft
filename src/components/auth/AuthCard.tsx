@@ -10,22 +10,86 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { cn } from "@/lib/utils";
+import { cn, getCookie } from "@/lib/utils";
+import { useState } from "react";
+import Link from "next/link";
 
 interface AuthCardProps {
   type: "login" | "register";
-  onSubmit?: (e: React.FormEvent<HTMLFormElement>) => void;
-  loading?: boolean;
+  loading?: boolean; // optional: kalau mau dikontrol dari parent
   className?: string;
 }
 
 export function AuthCard({
   type,
-  onSubmit,
-  loading,
+  loading: loadingProp = false,
   className,
 }: AuthCardProps) {
   const isLogin = type === "login";
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(loadingProp);
+
+  
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
+
+    try {
+      const fd = new FormData(e.currentTarget);
+
+      // 1) CSRF
+      const csrf = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/sanctum/csrf-cookie`,
+        {
+          credentials: "include",
+          headers: { "X-Requested-With": "XMLHttpRequest" },
+        }
+      );
+      if (!csrf.ok) throw new Error("Gagal inisiasi CSRF");
+
+      const xsrfToken = getCookie("XSRF-TOKEN");
+      if (!xsrfToken) throw new Error("XSRF-TOKEN cookie tidak ditemukan");
+
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-XSRF-TOKEN": decodeURIComponent(xsrfToken),
+        },
+        body: JSON.stringify({
+          ...(isLogin
+            ? {
+                email: fd.get("email"),
+                password: fd.get("password"),
+              }
+            : {
+                name: fd.get("name"),
+                email: fd.get("email"),
+                password: fd.get("password"),
+                password_confirmation: fd.get("password_confirmation"),
+              }),
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(
+          data?.message ?? (isLogin ? "Login gagal" : "Registrasi gagal")
+        );
+      }
+
+      window.location.href = "/dashboard";
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Terjadi kesalahan.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <Card className={cn("w-full max-w-sm mx-auto", className)}>
       <CardHeader>
@@ -77,13 +141,15 @@ export function AuthCard({
               <Label htmlFor="confirm">Konfirmasi Password</Label>
               <Input
                 id="confirm"
-                name="confirm"
+                name="password_confirmation"
                 type="password"
                 placeholder="••••••••"
                 required
               />
             </div>
           )}
+
+          {error && <p className="text-sm text-red-600">{error}</p>}
 
           <Button type="submit" className="w-full" disabled={loading}>
             {loading
@@ -95,20 +161,24 @@ export function AuthCard({
               : "Daftar"}
           </Button>
         </form>
+
         <div className="mt-4 text-center text-sm text-gray-500">
           {isLogin ? (
             <>
               Belum punya akun?{" "}
-              <a href="/register" className="text-mysecondary hover:underline">
+              <Link
+                href="/register"
+                className="text-mysecondary hover:underline"
+              >
                 Daftar sekarang
-              </a>
+              </Link>
             </>
           ) : (
             <>
               Sudah punya akun?{" "}
-              <a href="/login" className="text-mysecondary hover:underline">
+              <Link href="/login" className="text-mysecondary hover:underline">
                 Masuk
-              </a>
+              </Link>
             </>
           )}
         </div>
